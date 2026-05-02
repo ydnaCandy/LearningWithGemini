@@ -1,0 +1,36 @@
+{
+  "name": "Learning Environment",
+  "build": { "dockerfile": "Dockerfile" },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // Python
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        // Jupyter Notebook
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-renderers",
+        // JavaScript / Node.js
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        // Git
+        "mhutchie.git-graph",
+        // DB (SQLite)
+        "alexcvzz.vscode-sqlite",
+        // その他
+        "hediet.vscode-drawio"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/bin/python3",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.python"
+        }
+      }
+    }
+  },
+  "postCreateCommand": "npm install -g @drawio/mcp && mkdir -p ~/.gemini && (gemini mcp list | grep -q '^drawio ') || gemini mcp add -s user drawio drawio-mcp",
+  "remoteUser": "node"
+}
